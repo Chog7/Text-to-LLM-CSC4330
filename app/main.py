@@ -12,6 +12,7 @@ import uvicorn
 
 from app.config import config
 from app.telegram_controller import telegram_controller
+from app.whatsapp_controller import router as whatsapp_router
 from app.llm_service import llm_service
 from app.utils.logger import logger
 
@@ -48,6 +49,7 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+app.include_router(whatsapp_router)
 
 @app.get("/")
 async def root():
